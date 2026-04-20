@@ -1,7 +1,7 @@
 const COUNTRIES_API = "https://restcountries.com/v3.1/name/";
-const FAVORITES_URL = "http://localhost:3001";
-const VISITED_URL = "http://localhost:3002";
-const COMMENTS_URL = "http://localhost:3003";
+const FAVORITES_URL = "https://favorites-mlva.onrender.com";
+const VISITED_URL = "https://wishlist-16uy.onrender.com";
+const COMMENTS_URL = "https://comments-service-wwou.onrender.com";
 
 let currentCountry = null;
 
