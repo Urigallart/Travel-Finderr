@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelTech MultiCloud</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>TravelTech MultiCloud</h1>
+    <p>Cerca un país i gestiona favorits, visitats i comentaris.</p>
+
+    <div class="search-box">
+      <input type="text" id="countryInput" placeholder="Escriu un país..." />
+      <button onclick="searchCountry()">Buscar</button>
+    </div>
+
+    <div id="result" class="card"></div>
+
+    <div class="lists">
+      <div class="card">
+        <h2>Favorits</h2>
+        <button onclick="loadFavorites()">Actualitzar</button>
+        <ul id="favoritesList"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Visitats</h2>
+        <button onclick="loadVisited()">Actualitzar</button>
+        <ul id="visitedList"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Comentaris</h2>
+        <button onclick="loadComments()">Actualitzar</button>
+        <ul id="commentsList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
