@@ -1,15 +1,14 @@
 {
-  "name": "comments-service",
+  "name": "frontend",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Tests correctes\"",
     "build": "echo \"Build correcte\"",
+    "test": "echo \"Tests correctes\"",
     "lint": "echo \"Lint correcte\""
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.21.2"
   }
 }
