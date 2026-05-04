@@ -14,6 +14,10 @@ app.get("/", (req, res) => {
   res.send("Comments service running");
 });
 
+app.get("/prova-actions", (req, res) => {
+  res.send("GitHub Actions funciona correctament");
+});
+
 app.get("/comments", (req, res) => {
   res.json(comments);
 });
@@ -36,14 +40,15 @@ app.post("/comments", (req, res) => {
   }
 
   const newComment = {
-    id: currentId++,
+    id: currentId,
     country,
-    text
+    text,
   };
 
+  currentId += 1;
   comments.push(newComment);
 
-  res.status(201).json(newComment);
+  return res.status(201).json(newComment);
 });
 
 app.delete("/comments/:id", (req, res) => {
@@ -56,11 +61,9 @@ app.delete("/comments/:id", (req, res) => {
     return res.status(404).json({ error: "Comment not found" });
   }
 
-  res.json({ message: "Comment deleted" });
+  return res.json({ message: "Comment deleted" });
 });
-app.get("/prova-actions", (req, res) => {
-  res.send("GitHub Actions funciona correctament");
-});
+
 app.listen(PORT, () => {
   console.log(`Comments service running on port ${PORT}`);
 });
