@@ -58,7 +58,9 @@ app.delete("/comments/:id", (req, res) => {
 
   res.json({ message: "Comment deleted" });
 });
-
+app.get("/prova-actions", (req, res) => {
+  res.send("GitHub Actions funciona correctament");
+});
 app.listen(PORT, () => {
   console.log(`Comments service running on port ${PORT}`);
 });
