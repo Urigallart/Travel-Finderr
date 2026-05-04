@@ -1,0 +1,102 @@
+name: CI Node.js TravelTech
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-lint-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Descarrega el codi del repositori
+      - name: Checkout del codi
+        uses: actions/checkout@v4
+
+      # Configura Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Instal·la dependències de comments-service
+      - name: Instal·lar dependències comments-service
+        run: npm install
+        working-directory: comments-service
+
+      # Build comments-service
+      - name: Build comments-service
+        run: npm run build
+        working-directory: comments-service
+
+      # Lint comments-service
+      - name: Lint comments-service
+        run: npm run lint
+        working-directory: comments-service
+
+      # Tests comments-service
+      - name: Tests comments-service
+        run: npm test
+        working-directory: comments-service
+
+      # Instal·la dependències de favorites-service
+      - name: Instal·lar dependències favorites-service
+        run: npm install
+        working-directory: favorites-service
+
+      # Build favorites-service
+      - name: Build favorites-service
+        run: npm run build
+        working-directory: favorites-service
+
+      # Lint favorites-service
+      - name: Lint favorites-service
+        run: npm run lint
+        working-directory: favorites-service
+
+      # Tests favorites-service
+      - name: Tests favorites-service
+        run: npm test
+        working-directory: favorites-service
+
+      # Instal·la dependències de frontend
+      - name: Instal·lar dependències frontend
+        run: npm install
+        working-directory: frontend
+
+      # Build frontend
+      - name: Build frontend
+        run: npm run build
+        working-directory: frontend
+
+      # Lint frontend
+      - name: Lint frontend
+        run: npm run lint
+        working-directory: frontend
+
+      # Tests frontend
+      - name: Tests frontend
+        run: npm test
+        working-directory: frontend
+
+      # Instal·la dependències de visited-service
+      - name: Instal·lar dependències visited-service
+        run: npm install
+        working-directory: visited-service
+
+      # Build visited-service
+      - name: Build visited-service
+        run: npm run build
+        working-directory: visited-service
+
+      # Lint visited-service
+      - name: Lint visited-service
+        run: npm run lint
+        working-directory: visited-service
+
+      # Tests visited-service
+      - name: Tests visited-service
+        run: npm test
+        working-directory: visited-service

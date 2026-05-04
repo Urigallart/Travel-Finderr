@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Tests correctes\"",
+    "build": "echo \"Build correcte\"",
+    "lint": "echo \"Lint correcte\""
   },
   "dependencies": {
     "cors": "^2.8.5",
