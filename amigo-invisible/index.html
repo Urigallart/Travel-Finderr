@@ -117,6 +117,9 @@ p.lead{color:var(--ink-soft);font-size:17px;line-height:1.5;max-width:40ch;margi
 .who span.sp{width:.25em}
 .card small{display:block;margin-top:14px;color:var(--ink-soft);font-size:15px}
 .hush{margin:26px 0 22px;color:var(--ink-soft);font-size:15px;max-width:34ch;line-height:1.5}
+.testbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;width:100%;max-width:560px;margin:-12px 0 20px;padding:10px 14px;border-radius:14px;
+  background:var(--gold);color:#2a1d05;font-size:14px;font-weight:600;text-align:center;line-height:1.35}
+.testbar span{font-weight:400}
 .foot{margin-top:auto;padding-top:40px;font-size:12px;color:var(--ink-faint);text-align:center}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0s!important}.who span{opacity:1;transform:none}}
 </style>
@@ -127,6 +130,7 @@ p.lead{color:var(--ink-soft);font-size:17px;line-height:1.5;max-width:40ch;margi
 
 <main class="app">
   <div class="top"><span>Nadal <b>2026</b></span><span id="count">22 participantes</span></div>
+  <div class="testbar" id="testbar" hidden>MODO PRUEBA <span>· El nombre que sale es inventado y no se guarda nada.</span></div>
   <div id="view"></div>
   <div class="foot">Cada nombre solo se puede elegir una vez · No te tocará nadie de tu familia</div>
 </main>
@@ -142,6 +146,12 @@ const FAMILIES = [
 ];
 const ENC = {"Anna": "IAQREg==", "Oriol": "LwMKBB4=", "Jaume": "JA4WBQU=", "María Alba": "Og4KCA==", "Jana": "OAQKFRlAUQ==", "Abner": "JAARDAk=", "Neus": "Lw0BCBQ=", "Jordi": "Lw8KAA==", "Gemma": "IKLeEwVT", "Ventura": "JKLeDQVT", "Mireia": "IwAWosFTEFZTIUk/BBs=", "Núria": "LxQGBB5G", "Toni": "JgQIBAJT", "Aubert": "KQAGEwVXXA==", "Ricard": "IwAWosFTEHNaMAg=", "María del Mar": "PgAR", "Júlia": "KQQJDA0=", "Aleix": "reESCA0=", "Gabriel": "IwgWBAVT", "Pau": "JAAKAA==", "Helena": "IRMNDgA=", "Àvia": "PAgHAB5W"};
 const LS_KEY = "amigo-invisible-2026";
+let TEST = location.hash === "#prueba";
+function fakeFor(me){
+  const fam = FAMILIES.find(f => f.people.includes(me));
+  const pool = FAMILIES.filter(f => f !== fam).flatMap(f => f.people);
+  return pool[Math.random()*pool.length|0];
+}
 const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-");
 
 function decode(giver){
@@ -151,8 +161,8 @@ function decode(giver){
   return new TextDecoder().decode(out);
 }
 const store = {
-  get(){ try{ return localStorage.getItem(LS_KEY) }catch(e){ return null } },
-  set(v){ try{ localStorage.setItem(LS_KEY,v) }catch(e){} }
+  get(){ if(TEST) return null; try{ return localStorage.getItem(LS_KEY) }catch(e){ return null } },
+  set(v){ if(TEST) return; try{ localStorage.setItem(LS_KEY,v) }catch(e){} }
 };
 
 /* Shared claims: when the viewer is signed in, a chosen name is marked for everyone */
@@ -169,7 +179,7 @@ let db = null, taken = new Set();
   }catch(e){ db = null }
 })();
 async function claim(name){
-  if(!db) return true;
+  if(TEST || !db) return true;
   try{
     const ref = db.doc("claims/"+slug(name));
     const existing = await ref.get();
@@ -264,15 +274,16 @@ function renderGift(me){
 
 function renderReveal(me, fresh){
   current = "reveal";
-  const who = decode(me);
+  const who = TEST ? fakeFor(me) : decode(me);
   const letters = [...who].map((ch,i) => ch===" " ? `<span class="sp"> </span>` : `<span style="animation-delay:${(fresh?.45:.1)+i*.07}s">${esc(ch)}</span>`).join("");
   show(`
     <div class="reveal">
       <div class="eyebrow">${esc(me)}, tu amigo invisible es</div>
       <div class="card"><div class="who" aria-label="${esc(who)}">${letters}</div><small>Feliz Navidad 🎄</small></div>
       <p class="hush">Que no se entere nadie. Guarda el secreto hasta el día de los regalos.</p>
-      <div class="actions"><button class="btn ghost" id="hide">Ocultar</button></div>
+      <div class="actions">${TEST ? '<button class="btn" id="restart">Probar otra vez</button>' : '<button class="btn ghost" id="hide">Ocultar</button>'}</div>
     </div>`);
+  if(TEST){ document.getElementById("restart").onclick = () => { selected = null; renderIntro(); }; return; }
   document.getElementById("hide").onclick = () => renderLocked(me);
 }
 
@@ -317,6 +328,13 @@ function confetti(){
 }
 
 /* Start */
-const me = store.get();
-if(me && ENC[me]) renderLocked(me); else renderIntro();
+function start(){
+  TEST = location.hash === "#prueba";
+  document.getElementById("testbar").hidden = !TEST;
+  selected = null;
+  const me = store.get();
+  if(me && ENC[me]) renderLocked(me); else renderIntro();
+}
+addEventListener("hashchange", start);
+start();
 </script>
