@@ -1,7 +1,5 @@
-<title>Amigo Invisible Familia</title>
+<title>Amic Invisible Família</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 <style>
 /* Layout: one centred glass panel over a falling-snow night, screens slide in like an iOS flow */
 :root{
@@ -9,8 +7,8 @@
   --glass:rgba(255,255,255,.07); --glass-line:rgba(255,255,255,.14);
   --ink:#f6f2ea; --ink-soft:rgba(246,242,234,.66); --ink-faint:rgba(246,242,234,.38);
   --red:#d7263d; --red-deep:#9e1426; --gold:#e9c46a; --gold-soft:rgba(233,196,106,.18);
-  --display:"Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --text:-apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", Roboto, sans-serif;
+  --display:-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --text:-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -34,9 +32,9 @@ body{
 .screen{width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;text-align:center;
   animation:enter .7s cubic-bezier(.2,.8,.2,1) both}
 @keyframes enter{from{opacity:0;transform:translateY(24px) scale(.98);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
-h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,13vw,84px);line-height:.95;margin:8px 0 14px;letter-spacing:-.01em;text-wrap:balance}
-h1 em{color:var(--gold);font-style:italic}
-h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,8vw,46px);line-height:1.05;margin:0 0 8px;text-wrap:balance}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(46px,12vw,76px);line-height:1;margin:8px 0 14px;letter-spacing:-.035em;text-wrap:balance}
+h1 em{color:var(--gold);font-style:normal}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,8vw,42px);line-height:1.08;letter-spacing:-.03em;margin:0 0 8px;text-wrap:balance}
 p.lead{color:var(--ink-soft);font-size:17px;line-height:1.5;max-width:40ch;margin:0 0 28px}
 .btn{appearance:none;border:0;cursor:pointer;font:600 17px/1 var(--text);color:#fff;
   background:linear-gradient(180deg,var(--red),var(--red-deep));padding:18px 30px;border-radius:999px;min-width:220px;
@@ -71,7 +69,7 @@ p.lead{color:var(--ink-soft);font-size:17px;line-height:1.5;max-width:40ch;margi
 .chip.taken{opacity:.35;text-decoration:line-through;cursor:not-allowed}
 .sticky{position:sticky;bottom:calc(16px + env(safe-area-inset-bottom,0px));margin-top:20px;display:flex;justify-content:center;width:100%}
 
-.confirm-name{font-family:var(--display);font-size:clamp(44px,12vw,64px);color:var(--gold);line-height:1;margin:6px 0 18px}
+.confirm-name{font-family:var(--display);font-weight:700;letter-spacing:-.035em;font-size:clamp(44px,12vw,64px);color:var(--gold);line-height:1;margin:6px 0 18px}
 .warn{display:flex;gap:12px;align-items:flex-start;text-align:left;background:var(--gold-soft);border:1px solid rgba(233,196,106,.35);
   border-radius:18px;padding:14px 16px;margin:0 0 26px;color:var(--ink);font-size:15px;line-height:1.45;max-width:420px}
 .warn svg{flex:none;margin-top:2px}
@@ -111,7 +109,7 @@ p.lead{color:var(--ink-soft);font-size:17px;line-height:1.5;max-width:40ch;margi
   box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 6px rgba(233,196,106,.06);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   animation:rise 1s cubic-bezier(.2,.9,.2,1.05) both}
 @keyframes rise{from{opacity:0;transform:translateY(60px) scale(.85) rotateX(30deg)}to{opacity:1;transform:none}}
-.who{font-family:var(--display);font-size:clamp(54px,15vw,92px);line-height:1;color:var(--gold);text-shadow:0 0 40px rgba(233,196,106,.35)}
+.who{font-family:var(--display);font-weight:700;letter-spacing:-.035em;font-size:clamp(54px,15vw,92px);line-height:1;color:var(--gold);text-shadow:0 0 40px rgba(233,196,106,.35)}
 .who span{display:inline-block;opacity:0;transform:translateY(20px);animation:letter .6s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes letter{to{opacity:1;transform:none}}
 .who span.sp{width:.25em}
@@ -129,24 +127,24 @@ p.lead{color:var(--ink-soft);font-size:17px;line-height:1.5;max-width:40ch;margi
 <canvas id="confetti" aria-hidden="true"></canvas>
 
 <main class="app">
-  <div class="top"><span>Nadal <b>2026</b></span><span id="count">22 participantes</span></div>
-  <div class="testbar" id="testbar" hidden>MODO PRUEBA <span>· El nombre que sale es inventado y no se guarda nada.</span></div>
+  <div class="top"><span>Nadal <b>2026</b></span><span id="count">21 participants</span></div>
+  <div class="testbar" id="testbar" hidden>MODE PROVA <span>· El nom que surt és inventat i no es desa res.</span></div>
   <div id="view"></div>
-  <div class="foot">Cada nombre solo se puede elegir una vez · No te tocará nadie de tu familia</div>
+  <div class="foot">Cada nom només es pot triar una vegada · No et tocarà ningú de la teva família</div>
 </main>
 
 <script>
 const FAMILIES = [
-  {name:"Familia Gallart", people:["Anna","Oriol","Jaume","María Alba"]},
-  {name:"Familia Andorra", people:["Jana","Abner","Neus","Jordi","Gemma"]},
-  {name:"Familia Subirà",  people:["Ventura","Mireia","Núria","Toni"]},
-  {name:"Familia Aubert",  people:["Aubert","Ricard","María del Mar","Júlia","Aleix"]},
-  {name:"Gabriel, Pau y Helena", people:["Gabriel","Pau","Helena"]},
+  {name:"Família Gallart", people:["Anna","Oriol","Jaume","Maria Alba"]},
+  {name:"Família Andorra", people:["Jana","Abner","Neus","Jordi","Gemma"]},
+  {name:"Família Subirà",  people:["Ventura","Mireia","Núria","Toni"]},
+  {name:"Família Aubert",  people:["Ricard","Maria del Mar","Júlia","Aleix"]},
+  {name:"Gabriel, Pau i Helena", people:["Gabriel","Pau","Helena"]},
   {name:"La reina de la casa", people:["Àvia"]}
 ];
-const ENC = {"Anna": "IAQREg==", "Oriol": "LwMKBB4=", "Jaume": "JA4WBQU=", "María Alba": "Og4KCA==", "Jana": "OAQKFRlAUQ==", "Abner": "JAARDAk=", "Neus": "Lw0BCBQ=", "Jordi": "Lw8KAA==", "Gemma": "IKLeEwVT", "Ventura": "JKLeDQVT", "Mireia": "IwAWosFTEFZTIUk/BBs=", "Núria": "LxQGBB5G", "Toni": "JgQIBAJT", "Aubert": "KQAGEwVXXA==", "Ricard": "IwAWosFTEHNaMAg=", "María del Mar": "PgAR", "Júlia": "KQQJDA0=", "Aleix": "reESCA0=", "Gabriel": "IwgWBAVT", "Pau": "JAAKAA==", "Helena": "IRMNDgA=", "Àvia": "PAgHAB5W"};
+const ENC = {"Anna": "Lw0BCBQ=", "Oriol": "JgQIBAJT", "Jaume": "IKLeEwVT", "Maria Alba": "KQAGEwVXXA==", "Jana": "Lw8KAA==", "Abner": "IwAWCA0SVFdaYS8PFw==", "Neus": "IwAWCA0ScV5ULw==", "Jordi": "IwgWBAVT", "Gemma": "PAgHAB5W", "Ventura": "JA4WBQU=", "Mireia": "PgAR", "Núria": "IRMNDgA=", "Toni": "JKLeDQVT", "Ricard": "JAAKAA==", "Maria del Mar": "JAARDAk=", "Júlia": "IAQREg==", "Aleix": "Og4KCA==", "Gabriel": "OAQKFRlAUQ==", "Pau": "reESCA0=", "Helena": "KQQJDA0=", "Àvia": "LwMKBB4="};
 const LS_KEY = "amigo-invisible-2026";
-let TEST = location.hash === "#prueba";
+let TEST = location.hash === "#prova";
 function fakeFor(me){
   const fam = FAMILIES.find(f => f.people.includes(me));
   const pool = FAMILIES.filter(f => f !== fam).flatMap(f => f.people);
@@ -198,9 +196,9 @@ function renderIntro(){
   current = "intro";
   show(`
     <div class="ornament" aria-hidden="true"><div class="cap"></div><div class="ball"></div></div>
-    <h1>Amigo<br><em>Invisible</em></h1>
-    <p class="lead">Elige tu nombre, abre el regalo y descubre a quién le haces el regalo este Nadal. Solo lo podrás hacer una vez.</p>
-    <div class="actions"><button class="btn" id="go">Empezar</button></div>`);
+    <h1>Amic<br><em>Invisible</em></h1>
+    <p class="lead">Tria el teu nom, obre el regal i descobreix a qui li fas el regal aquest Nadal. Només ho podràs fer una vegada.</p>
+    <div class="actions"><button class="btn" id="go">Començar</button></div>`);
   document.getElementById("go").onclick = renderPick;
 }
 
@@ -210,18 +208,18 @@ function renderPick(){
     <div class="fam"><div class="fam-label">${esc(f.name)}</div><div class="chips">
       ${f.people.map(p => {
         const t = taken.has(slug(p));
-        return `<button class="chip${t?" taken":""}" data-p="${esc(p)}" aria-pressed="${selected===p}" ${t?'disabled aria-label="'+esc(p)+', ya elegido"':""}>${esc(p)}</button>`;
+        return `<button class="chip${t?" taken":""}" data-p="${esc(p)}" aria-pressed="${selected===p}" ${t?'disabled aria-label="'+esc(p)+', ja triat"':""}>${esc(p)}</button>`;
       }).join("")}
     </div></div>`).join("");
   show(`
-    <h2>¿Quién eres?</h2>
-    <p class="lead">Busca tu nombre. Si sale tachado, alguien ya lo ha elegido.</p>
+    <h2>Qui ets?</h2>
+    <p class="lead">Busca el teu nom. Si surt ratllat, algú ja l’ha triat.</p>
     <div class="panel">${fams}</div>
-    <div class="sticky"><button class="btn" id="next" ${selected?"":"disabled"}>${selected?"Soy "+esc(selected):"Selecciona tu nombre"}</button></div>`);
+    <div class="sticky"><button class="btn" id="next" ${selected?"":"disabled"}>${selected?"Sóc "+esc(selected):"Selecciona el teu nom"}</button></div>`);
   view.querySelectorAll(".chip:not(.taken)").forEach(b => b.onclick = () => {
     selected = b.dataset.p;
     view.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.p===selected));
-    const n = document.getElementById("next"); n.disabled = false; n.textContent = "Soy " + selected;
+    const n = document.getElementById("next"); n.disabled = false; n.textContent = "Sóc " + selected;
   });
   document.getElementById("next").onclick = () => selected && renderConfirm();
 }
@@ -229,15 +227,15 @@ function renderPick(){
 function renderConfirm(){
   current = "confirm";
   show(`
-    <p class="lead" style="margin-bottom:4px">Vas a entrar como</p>
+    <p class="lead" style="margin-bottom:4px">Entraràs com a</p>
     <div class="confirm-name">${esc(selected)}</div>
     <div class="warn">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e9c46a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v6M12 17h.01"/></svg>
-      <span>Solo puedes hacerlo una vez. Después este dispositivo quedará vinculado a ti y no podrás elegir otro nombre.</span>
+      <span>Només ho pots fer una vegada. Després aquest dispositiu quedarà vinculat a tu i no podràs triar un altre nom.</span>
     </div>
     <div class="actions">
-      <button class="btn" id="yes">Sí, soy ${esc(selected)}</button>
-      <button class="btn ghost" id="no">No, volver</button>
+      <button class="btn" id="yes">Sí, sóc ${esc(selected)}</button>
+      <button class="btn ghost" id="no">No, tornar</button>
     </div>`);
   document.getElementById("no").onclick = renderPick;
   document.getElementById("yes").onclick = async e => {
@@ -252,15 +250,15 @@ function renderConfirm(){
 function renderGift(me){
   current = "gift";
   show(`
-    <p class="lead" style="margin-bottom:0">Hola, ${esc(me)}. Tu regalo te espera.</p>
+    <p class="lead" style="margin-bottom:0">Hola, ${esc(me)}. El teu regal t’espera.</p>
     <div class="stage">
       <div class="glow" id="glow"></div>
-      <div class="gift idle" id="gift" role="button" tabindex="0" aria-label="Abrir el regalo">
+      <div class="gift idle" id="gift" role="button" tabindex="0" aria-label="Obrir el regal">
         <div class="box"></div>
         <div class="lid"><div class="bow"><i></i><i></i><b></b></div></div>
       </div>
     </div>
-    <div class="tap">Toca el regalo para abrirlo</div>`);
+    <div class="tap">Toca el regal per obrir-lo</div>`);
   const g = document.getElementById("gift");
   const open = () => {
     if(g.dataset.busy) return; g.dataset.busy = 1;
@@ -278,10 +276,10 @@ function renderReveal(me, fresh){
   const letters = [...who].map((ch,i) => ch===" " ? `<span class="sp"> </span>` : `<span style="animation-delay:${(fresh?.45:.1)+i*.07}s">${esc(ch)}</span>`).join("");
   show(`
     <div class="reveal">
-      <div class="eyebrow">${esc(me)}, tu amigo invisible es</div>
-      <div class="card"><div class="who" aria-label="${esc(who)}">${letters}</div><small>Feliz Navidad 🎄</small></div>
-      <p class="hush">Que no se entere nadie. Guarda el secreto hasta el día de los regalos.</p>
-      <div class="actions">${TEST ? '<button class="btn" id="restart">Probar otra vez</button>' : '<button class="btn ghost" id="hide">Ocultar</button>'}</div>
+      <div class="eyebrow">${esc(me)}, el teu amic invisible és</div>
+      <div class="card"><div class="who" aria-label="${esc(who)}">${letters}</div><small>Bon Nadal 🎄</small></div>
+      <p class="hush">Que no se n’assabenti ningú. Guarda el secret fins al dia dels regals.</p>
+      <div class="actions">${TEST ? '<button class="btn" id="restart">Provar-ho un altre cop</button>' : '<button class="btn ghost" id="hide">Amagar</button>'}</div>
     </div>`);
   if(TEST){ document.getElementById("restart").onclick = () => { selected = null; renderIntro(); }; return; }
   document.getElementById("hide").onclick = () => renderLocked(me);
@@ -291,9 +289,9 @@ function renderLocked(me){
   current = "locked";
   show(`
     <div class="ornament" aria-hidden="true"><div class="cap"></div><div class="ball"></div></div>
-    <h2>Ya tienes tu<br>amigo invisible</h2>
-    <p class="lead">Este dispositivo está vinculado a <b style="color:var(--gold)">${esc(me)}</b>. Puedes volver a ver tu resultado cuando quieras.</p>
-    <div class="actions"><button class="btn" id="again">Ver otra vez</button></div>`);
+    <h2>Ja tens el teu<br>amic invisible</h2>
+    <p class="lead">Aquest dispositiu està vinculat a <b style="color:var(--gold)">${esc(me)}</b>. Pots tornar a veure el teu resultat quan vulguis.</p>
+    <div class="actions"><button class="btn" id="again">Tornar-ho a veure</button></div>`);
   document.getElementById("again").onclick = () => renderReveal(me, false);
 }
 
@@ -329,7 +327,7 @@ function confetti(){
 
 /* Start */
 function start(){
-  TEST = location.hash === "#prueba";
+  TEST = location.hash === "#prova";
   document.getElementById("testbar").hidden = !TEST;
   selected = null;
   const me = store.get();
